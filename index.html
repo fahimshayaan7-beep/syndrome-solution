@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Syndrome Solution | Medical Care & Consultation</title>
+  <meta name="description"
+        content="Syndrome Solution — compassionate, patient-focused medical care and consultation.">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f7fbfc;
+      color: #17323b;
+      line-height: 1.6;
+    }
+
+    /* NAVBAR */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(255,255,255,0.96);
+      box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 7%;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 22px;
+      font-weight: bold;
+      color: #0b8293;
+    }
+
+    .heart {
+      font-size: 30px;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #17323b;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      color: #0b9aaa;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      padding: 150px 7% 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 50px;
+      background: linear-gradient(135deg, #e9fbff, #ffffff);
+    }
+
+    .hero-text {
+      max-width: 650px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 8px 17px;
+      border-radius: 30px;
+      background: #d8f5f8;
+      color: #087789;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 6vw, 72px);
+      line-height: 1.05;
+      margin-bottom: 20px;
+      color: #123d47;
+    }
+
+    h1 span {
+      color: #0a9aaa;
+    }
+
+    .hero p {
+      font-size: 19px;
+      color: #587078;
+      margin-bottom: 30px;
+      max-width: 600px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 25px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .primary {
+      background: #0a9aaa;
+      color: white;
+      box-shadow: 0 8px 20px rgba(10,154,170,0.25);
+    }
+
+    .primary:hover {
+      transform: translateY(-3px);
+      background: #087f8d;
+    }
+
+    .secondary {
+      border: 2px solid #0a9aaa;
+      color: #087f8d;
+    }
+
+    .secondary:hover {
+      background: #e3f9fb;
+    }
+
+    /* HEART CARD */
+    .hero-card {
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      background: white;
+      box-shadow: 0 20px 60px rgba(0,100,120,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 150px;
+      flex-shrink: 0;
+      animation: pulse 2.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%,100% { transform: scale(1); }
+      50% { transform: scale(1.04); }
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 90px 7%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title h2 {
+      font-size: 40px;
+      color: #123d47;
+      margin-bottom: 10px;
+    }
+
+    .section-title p {
+      color: #6a7c82;
+    }
+
+    /* SERVICES */
+    .services {
+      background: white;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .service {
+      padding: 30px;
+      background: #f6fcfd;
+      border-radius: 20px;
+      border: 1px solid #e1f0f2;
+      transition: 0.3s;
+    }
+
+    .service:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.07);
+    }
+
+    .service-icon {
+      font-size: 40px;
+      margin-bottom: 15px;
+    }
+
+    .service h3 {
+      margin-bottom: 10px;
+      color: #123d47;
+    }
+
+    .service p {
+      color: #65777d;
+    }
+
+    /* ABOUT */
+    .about-container {
+      max-width: 1000px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .about-container p {
+      font-size: 18px;
+      color: #5c7076;
+    }
+
+    .trust-boxes {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 20px;
+    }
+
+    .trust {
+      background: white;
+      padding: 25px;
+      border-radius: 18px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+    }
+
+    .trust strong {
+      display: block;
+      font-size: 18px;
+      color: #087f8d;
+      margin-bottom: 5px;
+    }
+
+    /* DOCTOR */
+    .doctor {
+      background: #eafbfd;
+    }
+
+    .doctor-card {
+      max-width: 850px;
+      margin: auto;
+      background: white;
+      border-radius: 25px;
+      padding: 40px;
+      display: flex;
+      align-items: center;
+      gap: 35px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.07);
+    }
+
+    .doctor-photo {
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      background: #dff7fa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 75px;
+      flex-shrink: 0;
+    }
+
+    .doctor-info h3 {
+      font-size: 28px;
+      margin-bottom: 5px;
+    }
+
+    .doctor-info .qualification {
+      color: #0a9aaa;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    /* APPOINTMENT */
+    .appointment {
+      background: linear-gradient(135deg, #087f8d, #0a9aaa);
+      color: white;
+      text-align: center;
+    }
+
+    .appointment h2 {
+      font-size: 42px;
+      margin-bottom: 15px;
+    }
+
+    .appointment p {
+      margin-bottom: 25px;
+      font-size: 18px;
+      opacity: 0.95;
+    }
+
+    .appointment .btn {
+      background: white;
+      color: #087f8d;
+    }
+
+    /* CONTACT */
+    .contact {
+      background: white;
+    }
+
+    .contact-grid {
+      max-width: 900px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 20px;
+      text-align: center;
+    }
+
+    .contact-item {
+      padding: 25px;
+      background: #f6fcfd;
+      border-radius: 18px;
+    }
+
+    .contact-item .icon {
+      font-size: 35px;
+      margin-bottom: 10px;
+    }
+
+    .contact-item h3 {
+      margin-bottom: 5px;
+    }
+
+    .contact-item a {
+      color: #087f8d;
+      text-decoration: none;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #123d47;
+      color: white;
+      text-align: center;
+      padding: 30px 7%;
+    }
+
+    footer p {
+      opacity: 0.8;
+      margin-top: 5px;
+    }
+
+    /* WHATSAPP */
+    .whatsapp {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #25D366;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 29px;
+      text-decoration: none;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+      z-index: 2000;
+    }
+
+    /* MOBILE */
+    @media(max-width: 800px) {
+
+      nav {
+        padding: 13px 5%;
+      }
+
+      nav ul {
+        display: none;
+      }
+
+      .hero {
+        padding: 130px 6% 70px;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .buttons {
+        justify-content: center;
+      }
+
+      .hero-card {
+        width: 260px;
+        height: 260px;
+        font-size: 105px;
+      }
+
+      section {
+        padding: 70px 6%;
+      }
+
+      .service-grid,
+      .trust-boxes,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .doctor-card {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="logo">
+      <span class="heart">❤️</span>
+      Syndrome Solution
+    </div>
+
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#doctor">Doctor</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+
+    <div class="hero-text">
+
+      <span class="tag">🩺 Medical Care • Compassion • Trust</span>
+
+      <h1>
+        Your Health.<br>
+        Our <span>Commitment.</span>
+      </h1>
+
+      <p>
+        Welcome to Syndrome Solution — a patient-focused medical
+        consultation platform dedicated to understanding your symptoms,
+        providing clear guidance and helping you make informed decisions
+        about your health.
+      </p>
+
+      <div class="buttons">
+        <a href="#contact" class="btn primary">
+          Book Consultation
+        </a>
+
+        <a href="#services" class="btn secondary">
+          Explore Services
+        </a>
+      </div>
+
+    </div>
+
+    <div class="hero-card">
+      ❤️
+    </div>
+
+  </section>
+
+
+  <!-- ABOUT -->
+  <section id="about">
+
+    <div class="section-title">
+      <h2>Why Syndrome Solution?</h2>
+      <p>Medical care with clarity, compassion and trust.</p>
+    </div>
+
+    <div class="about-container">
+
+      <p>
+        At Syndrome Solution, we believe healthcare should be simple,
+        understandable and patient-centred. Our goal is to listen carefully,
+        understand your concerns and provide appropriate medical guidance
+        based on clinical evaluation and evidence-based practice.
+      </p>
+
+      <div class="trust-boxes">
+
+        <div class="trust">
+          <strong>🩺 Patient Focused</strong>
+          Care designed around your individual concerns.
+        </div>
+
+        <div class="trust">
+          <strong>🔬 Evidence Based</strong>
+          Medical guidance grounded in sound clinical principles.
+        </div>
+
+        <div class="trust">
+          <strong>🤝 Built on Trust</strong>
+          Honest communication and compassionate care.
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+
+    <div class="section-title">
+      <h2>Our Services</h2>
+      <p>Professional medical consultation and guidance.</p>
+    </div>
+
+    <div class="service-grid">
+
+      <div class="service">
+        <div class="service-icon">🩺</div>
+        <h3>General Consultation</h3>
+        <p>
+          Medical consultation for common health concerns,
+          symptoms and illnesses.
+        </p>
+      </div>
+
+      <div class="service">
+        <div class="service-icon">❤️</div>
+        <h3>Heart & Lifestyle</h3>
+        <p>
+          Guidance regarding cardiovascular health,
+          healthy lifestyle and risk factors.
+        </p>
+      </div>
+
+      <div class="service">
+        <div class="service-icon">📋</div>
+        <h3>Health Assessment</h3>
+        <p>
+          Systematic evaluation of symptoms and medical
+          concerns with appropriate guidance.
+        </p>
+      </div>
+
+      <div class="service">
+        <div class="service-icon">🧪</div>
+        <h3>Investigation Guidance</h3>
+        <p>
+          Help understanding commonly prescribed
+          laboratory and diagnostic investigations.
+        </p>
+      </div>
+
+      <div class="service">
+        <div class="service-icon">💊</div>
+        <h3>Medication Guidance</h3>
+        <p>
+          Clear explanation regarding prescribed medications
+          and their appropriate use.
+        </p>
+      </div>
+
+      <div class="service">
+        <div class="service-icon">📞</div>
+        <h3>Follow-Up Care</h3>
+        <p>
+          Continued consultation and monitoring according
+          to your individual healthcare needs.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- DOCTOR -->
+  <section class="doctor" id="doctor">
+
+    <div class="section-title">
+      <h2>Meet Your Doctor</h2>
+      <p>Professional care with a personal approach.</p>
+    </div>
+
+    <div class="doctor-card">
+
+      <div class="doctor-photo">
+        👨‍⚕️
+      </div>
+
+      <div class="doctor-info">
+
+        <h3>Dr. Your Name</h3>
+
+        <div class="qualification">
+          MBBS | Medical Practitioner
+        </div>
+
+        <p>
+          Dedicated to providing compassionate medical care,
+          clear communication and patient-focused consultation.
+        </p>
+
+        <br>
+
+        <p>
+          <strong>Areas of Interest:</strong>
+          General Medicine • Preventive Healthcare •
+          Lifestyle & Cardiovascular Health
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- APPOINTMENT -->
+  <section class="appointment">
+
+    <h2>Need Medical Guidance?</h2>
+
+    <p>
+      Take the first step towards understanding your health.
+    </p>
+
+    <a href="#contact" class="btn">
+      Book an Appointment
+    </a>
+
+  </section>
+
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+
+    <div class="section-title">
+      <h2>Contact Us</h2>
+      <p>We're here to help.</p>
+    </div>
+
+    <div class="contact-grid">
+
+      <div class="contact-item">
+        <div class="icon">📞</div>
+        <h3>Call</h3>
+        <a href="tel:+919999999999">
+          +91 99999 99999
+        </a>
+      </div>
+
+      <div class="contact-item">
+        <div class="icon">💬</div>
+        <h3>WhatsApp</h3>
+        <a href="https://wa.me/919999999999">
+          Chat with us
+        </a>
+      </div>
+
+      <div class="contact-item">
+        <div class="icon">📍</div>
+        <h3>Clinic</h3>
+        <p>
+          Your Clinic Address<br>
+          Kolkata, West Bengal
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer>
+
+    <h3>❤️ Syndrome Solution</h3>
+
+    <p>
+      Medical Care • Clarity • Compassion • Trust
+    </p>
+
+    <p>
+      © 2026 Syndrome Solution. All rights reserved.
+    </p>
+
+  </footer>
+
+
+  <!-- FLOATING WHATSAPP -->
+  <a
+    class="whatsapp"
+    href="https://wa.me/919999999999"
+    target="_blank"
+    aria-label="WhatsApp">
+    💬
+  </a>
+
+</body>
+</html>
